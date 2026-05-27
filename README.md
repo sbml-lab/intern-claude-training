@@ -33,7 +33,7 @@ All interns follow these rules throughout the training:
 
 ## Included Skills
 
-Three skills are included in this repo:
+Three custom skills are provided for this training:
 
 | Skill | Description |
 |-------|-------------|
