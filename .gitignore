@@ -8,3 +8,19 @@ __pycache__/
 dist/
 build/
 .env
+
+# Lab-internal reference files (instructor copies these; not committed)
+data/reference/ec_annotation_20100903_DHK_cSRNA_with_ortho.gff
+
+# Instructor-provided cohort dataset (not committed)
+module5-6-miniproject/data/*
+!module5-6-miniproject/data/README.md
+
+# Generated alignment files from exercises
+*.fastq
+*.fasta
+*.fa
+*.sam
+*.bam
+*.bai
+*.bt2
