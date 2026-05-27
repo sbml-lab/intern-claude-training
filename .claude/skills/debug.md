@@ -46,8 +46,6 @@ Remind the user: "Add this to your `/log` entry under 'Broke / Struggled' — no
 
 - Common failure patterns in this lab's stack:
   - bowtie2: index not built before alignment (`bowtie2-build` must run first)
-  - samtools index: BAM must be sorted before indexing
   - MEME: input FASTA must have ≥2 sequences and sequences must be the same type (DNA)
   - Biopython SeqIO: wrong format string (e.g. `"fasta"` vs `"fastq"`)
-  - pandas: GFF files have no header row — must pass `header=None` and assign column names manually
   - fastq-dump: `--split-files` needed for paired-end; omitting it merges both reads into one file

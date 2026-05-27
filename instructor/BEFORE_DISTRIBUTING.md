@@ -15,7 +15,7 @@ Requirements for the chosen accession:
 - ~500,000 reads (subsample if necessary with `seqtk sample`)
 - Alignment should complete in under 5 minutes on Codespace free tier (2 vCPU, 4 GB RAM)
 
-Recommended: pick from published FUR ChIP-exo datasets (e.g., GEO series GSE41d698 or similar). Subsample with:
+Recommended: use a single-end ChIP-exo sample from the same Seo et al. 2014 study (GEO: GSE54901) for consistency with Module 4. Subsample with:
 ```bash
 seqtk sample SRR######.fastq 500000 > SRR######_500k.fastq
 ```
@@ -58,8 +58,8 @@ This directory is empty in the repo. Add the dataset before distributing:
    conda activate sbml
    bowtie2 --version
    samtools --version
-   meme --version
-   python -c "import biopython; print('ok')"
+   meme -version
+   python -c "import Bio; print('Biopython', Bio.__version__)"
    efetch -version
    claude --version
    ```
