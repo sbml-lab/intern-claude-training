@@ -9,9 +9,22 @@ conda config --add channels bioconda
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 
-# Create the sbml environment with all bioinformatics tools
-conda create -n sbml -y \
-  python=3.11 \
+# Install mamba for faster package resolution
+echo "==> Installing mamba..."
+conda install -n base -c conda-forge mamba -y
+
+# Phase 1: Create env with Python + Jupyter immediately so VS Code has a valid interpreter
+echo "==> Phase 1: Creating sbml env with Python + Jupyter..."
+mamba create -n sbml -y python=3.11 ipykernel jupyter notebook
+
+# Register the kernel right away so VS Code can use it
+conda run -n sbml python -m ipykernel install --user --name sbml --display-name "Python (sbml)"
+
+echo "==> Python (sbml) kernel ready. VS Code can now connect."
+
+# Phase 2: Install bioinformatics tools
+echo "==> Phase 2: Installing bioinformatics tools (this takes a while)..."
+mamba install -n sbml -y \
   bowtie2 \
   samtools \
   bedtools \
@@ -23,22 +36,16 @@ conda create -n sbml -y \
   pandas \
   matplotlib \
   seaborn \
-  jupyter \
-  ipykernel \
-  notebook \
   entrez-direct
-
-# Register the kernel so Jupyter sees it
-conda run -n sbml python -m ipykernel install --user --name sbml --display-name "Python (sbml)"
 
 # Auto-activate sbml environment in new shells
 echo "conda activate sbml" >> ~/.bashrc
 
 # Install Claude Code CLI (requires Node.js)
+echo "==> Installing Claude Code CLI..."
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt-get install -y nodejs
 npm install -g @anthropic-ai/claude-code
 
 echo ""
-echo "==> Environment ready. 'sbml' conda environment will activate automatically in new shells."
-echo "==> Claude Code: run 'claude' in the terminal and authenticate with your Pro plan account."
+echo "==> Environment fully ready. Run 'claude' in the terminal and authenticate with your Pro plan account."
