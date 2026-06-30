@@ -16,3 +16,9 @@ RUN conda install -n base -c conda-forge mamba -y && \
 
 # Set sbml env as default in PATH — no conda activation needed
 ENV PATH="/opt/conda/envs/sbml/bin:/opt/conda/bin:${PATH}"
+
+# Install Node.js 20 and Claude Code CLI at image build time
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g @anthropic-ai/claude-code && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
