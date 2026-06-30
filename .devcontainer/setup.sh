@@ -25,9 +25,9 @@ conda run -n sbml python -m ipykernel install --user --name sbml --display-name 
 
 echo "==> Python (sbml) kernel ready."
 
-# Initialize conda for interactive shells, then auto-activate sbml
-conda init bash
-echo "conda activate sbml" >> ~/.bashrc
+# Source conda profile then activate sbml in every new shell
+echo 'source /opt/conda/etc/profile.d/conda.sh' >> ~/.bashrc
+echo 'conda activate sbml' >> ~/.bashrc
 
 # Install Claude Code CLI (requires Node.js)
 echo "==> Installing Claude Code CLI..."
