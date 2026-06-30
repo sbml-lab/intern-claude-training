@@ -1,6 +1,8 @@
 {
   "name": "SBML Intern Claude Training",
-  "image": "mcr.microsoft.com/devcontainers/miniconda:3",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "postCreateCommand": "bash .devcontainer/setup.sh",
   "waitFor": "postCreateCommand",
   "customizations": {
