@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/devcontainers/miniconda:3
 RUN conda config --add channels defaults && \
     conda config --add channels bioconda && \
     conda config --add channels conda-forge && \
-    conda config --set channel_priority strict
+    conda config --set channel_priority flexible
 
 # Install mamba and create sbml env at IMAGE BUILD TIME
 RUN conda install -n base -c conda-forge mamba -y && \
