@@ -23,3 +23,6 @@ data/reference/*.bt2
 
 # MEME output directories
 */meme_output/
+
+# Instructor-only materials (answer keys, rubric, reports — never distribute to interns)
+instructor/
