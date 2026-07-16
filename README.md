@@ -47,7 +47,7 @@ You hand back your work through **git**, not by sharing your Codespace. At the s
 | **MetaScope exported figures** | **`notebooks/`** — e.g. `notebooks/module3_chipexo_metascope.png` |
 
 > **⚠️ Two things that will silently NOT reach your instructor:**
-> 1. **Anything in `data/reference/`** — raw reads, genomes, BAMs, and generated GFFs there are gitignored (too large to commit). That's fine; your instructor regenerates them. But it means **your MetaScope figure must go in `notebooks/`, not `data/reference/`.**
+> 1. **Large raw data in `data/reference/` is gitignored** — reads, genomes, and alignments (`.fastq`, `.fasta`, `.fa`, `.sam`, `.bam`, `.bai`, `.bt2`) are not committed (too large; your instructor regenerates them). Other files there — including `.gff` and `.png` — are *not* ignored and would be committed. To keep submissions tidy and predictable, **put your notebooks, scripts, and MetaScope figures in `notebooks/`.**
 > 2. You export MetaScope figures on **your own computer** (MetaScope isn't in the Codespace). Upload the PNG back into the Codespace, drop it in `notebooks/`, and commit it — otherwise there is no record you completed the visualization.
 
 **End-of-session commit (every session):**
