@@ -43,7 +43,7 @@ You hand back your work through **git**, not by sharing your Codespace. At the s
 |---|---|
 | Completed notebooks | `notebooks/0*.ipynb` |
 | Session logs (from `/log`) | `log/session-log.md` |
-| Scripts you wrote (e.g. `makegff.py`) | `notebooks/` |
+| Scripts you wrote (e.g. TSS-distance, your Ex 6 practice script) | `notebooks/` |
 | **MetaScope exported figures** | **`notebooks/`** — e.g. `notebooks/module3_chipexo_metascope.png` |
 
 > **⚠️ Two things that will silently NOT reach your instructor:**

@@ -45,7 +45,7 @@ Reference genome for *E. coli* K-12 MG1655: **NC_000913** (NCBI)
 - **SAM → BAM**: `samtools view -bS`
 - **Sort**: `samtools sort`
 - **Index**: `samtools index`
-- **Coverage/GFF**: `makegff.py` (lab custom script — converts BAM to GFF format for MetaScope)
+- **Coverage/GFF**: `makegff.py` (lab custom script at the repo root — per-position strand-specific read coverage → GFF for MetaScope; flags `--separate_strand`, `--flip` for RNA-seq, `--log_scale`)
 
 ### Data Retrieval
 - Source: NCBI GEO / SRA
@@ -66,7 +66,7 @@ seqname  source  feature  start  end  score  strand  frame  attribute
 ```
 - 1-based coordinates
 - Strand: `+` or `-`
-- The annotation GFF uses `gene` as the feature type; `makegff.py` output (aligned reads) uses `read` as the feature type
+- The annotation GFF uses `gene` as the feature type; `makegff.py` output is per-position **coverage depth** (one row per covered base, score = depth), not one row per read
 
 ### Python Libraries
 - `pandas` — DataFrame operations on GFF / count tables
@@ -90,7 +90,7 @@ seqname  source  feature  start  end  score  strand  frame  attribute
 - **Install**: from the lab homepage (sbml-lab.ai). It is a **desktop application** — it runs on the intern's own computer (Windows or macOS), **not** inside the Codespace.
 - **Workflow**: produce/verify the GFF in the Codespace → download the GFF to the local machine → open it in MetaScope → overlay with the annotation → export a figure (PNG at 300 dpi or SVG).
 - **Key operations**: `Ctrl/Cmd+O` open a GFF (adds a track); `Ctrl/Cmd+G` go to a genomic position; `Ctrl/Cmd+F` search the loaded features by name; `Ctrl+Shift+E` export image; `Ctrl/Cmd+Shift+C` / `+H` set track color / height; hover a feature for its position/strand/name tooltip.
-- **Tracks are grouped by chromosome ID (column 1 of the GFF).** To overlay two tracks they must share the same seqname. The lab annotation uses `NC_000913`; `makegff.py` output uses `NC_000913.3` (the reference-FASTA accession). If tracks land on separate chromosome tabs and won't line up, normalize column 1 so they match.
+- **Tracks are grouped by chromosome ID (column 1 of the GFF).** To overlay tracks they must share the same seqname. The lab annotation uses `NC_000913`, and the lab `makegff.py` **hardcodes `NC_000913`** in its output — so makegff coverage tracks and the annotation overlay automatically. Any track you build by hand (e.g. a binding-site GFF) must also use `NC_000913` in column 1 to line up.
 
 ---
 
